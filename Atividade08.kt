@@ -13,14 +13,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         val temperatureInput = findViewById<EditText>(R.id.temperatureInput)
         val conversionRadioGroup = findViewById<RadioGroup>(R.id.conversionRadioGroup)
         val celsiusToFahrenheitRadioButton = findViewById<RadioButton>(R.id.celsiusToFahrenheit)
         val fahrenheitToCelsiusRadioButton = findViewById<RadioButton>(R.id.fahrenheitToCelsius)
         val convertButton = findViewById<Button>(R.id.convertButton)
         val resultTextView = findViewById<TextView>(R.id.resultTextView)
-
+        
         convertButton.setOnClickListener {
             val input = temperatureInput.text.toString()
             if (input.isNotEmpty()) {
@@ -32,7 +31,6 @@ class MainActivity : AppCompatActivity() {
                     R.id.fahrenheitToCelsius -> (temperature - 32) * 5 / 9
                     else -> null
                 }
-
                 result?.let {
                     resultTextView.text = "Resultado: %.2f".format(it)
                 } ?: run {
